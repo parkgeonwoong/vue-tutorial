@@ -23,7 +23,8 @@
       <p v-once>Starting Counter: {{ counter }}</p>
       <p>Result: {{ counter }}</p>
 
-      <input type="text" v-on:input="setName" v-on:keyup.enter="confirmInput()" />
+      <input type="text" v-model="name" v-on:keyup.enter="confirmInput()" />
+      <button v-on:click="resetInput">Reset Input</button>
       <p>Your Name: {{ confirmedName }}</p>
 
       <form v-on:submit.prevent="submitForm">
