@@ -4,18 +4,25 @@ const app = Vue.createApp({
       counter: 0,
       num: 5,
       name: "",
+      lastName: "",
     };
+  },
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        this.counter = 0;
+      }
+    },
   },
   computed: {
     fullName() {
       console.log("Running again...");
-      if (this.name === "") {
+      if (this.name === "" || this.lastName === "") {
         return "";
       }
-      return this.name + " " + "Woong";
+      return this.name + " " + this.lastName;
     },
   },
-
   methods: {
     submitForm() {
       alert("Submitted!");
