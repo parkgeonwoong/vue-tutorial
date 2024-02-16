@@ -6,16 +6,17 @@ const app = Vue.createApp({
       name: "",
     };
   },
-
-  methods: {
-    outputFullName() {
-      // FIXME: 메서드는 페이지 렌더링마다 실행됨
+  computed: {
+    fullName() {
       console.log("Running again...");
       if (this.name === "") {
         return "";
       }
       return this.name + " " + "Woong";
     },
+  },
+
+  methods: {
     submitForm() {
       alert("Submitted!");
     },
