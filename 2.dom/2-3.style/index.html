@@ -18,8 +18,8 @@
     </header>
     <section id="styling">
       <!-- :style="{borderColor: boxASelected ? 'red' : '#ccc'}" -->
-      <div class="demo" :class="{ active: boxASelected}" @click="boxSelected('A')"></div>
-      <div class="demo" :class="{ active: boxBSelected}" @click="boxSelected('B')"></div>
+      <div class="demo" :class="boxAClasses" @click="boxSelected('A')"></div>
+      <div :class="['demo', { active: boxBSelected}]" @click="boxSelected('B')"></div>
       <div class="demo" :class="{ active: boxCSelected}" @click="boxSelected('C')"></div>
     </section>
   </body>
