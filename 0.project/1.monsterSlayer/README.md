@@ -16,8 +16,8 @@
 
 - [x] "Attack" 버튼을 통한 사용자와 몬스터의 체력 감소
 - [x] 체력바 업데이트
-- [ ] "Special Attack" 추가하기
-- [ ] "Heal" 추가하기
+- [x] "Special Attack" 추가하기
+- [x] "Heal" 추가하기
 - [ ] "Surrender" 추가하기
 
 #### 추가 기능
