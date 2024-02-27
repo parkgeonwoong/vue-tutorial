@@ -15,19 +15,15 @@ const app = Vue.createApp({
     playerHealth(value) {
       if (value <= 0 && this.monsterHealth <= 0) {
         this.winner = "draw";
-        this.resetHealth();
       } else if (value <= 0) {
         this.winner = "monster";
-        this.resetHealth();
       }
     },
     monsterHealth(value) {
       if (value <= 0 && this.playerHealth <= 0) {
         this.winner = "draw";
-        this.resetHealth();
       } else if (value <= 0) {
         this.winner = "player";
-        this.resetHealth();
       }
     },
   },
@@ -68,10 +64,14 @@ const app = Vue.createApp({
       this.playerHealth = Math.min(this.playerHealth + healValue, 100);
       this.attackPlayer();
     },
-    resetHealth() {
+    resetGame() {
       this.playerHealth = 100;
       this.monsterHealth = 100;
       this.currentRound = 0;
+      this.winner = null;
+    },
+    surrender() {
+      this.winner = "monster";
     },
   },
 });
