@@ -18,9 +18,9 @@
 - [x] 체력바 업데이트
 - [x] "Special Attack" 추가하기
 - [x] "Heal" 추가하기
-- [ ] "Surrender" 추가하기
+- [x] "Surrender" 추가하기
 
 #### 추가 기능
 
-- [ ] "Game Over" 추가하기
+- [x] "Game Over" 추가하기
 - [ ] 전투기록 로그 추가하기
