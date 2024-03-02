@@ -1,8 +1,8 @@
 const app = Vue.createApp({
   data() {
     return {
-      currentUserInput: '',
-      message: 'Vue is great!',
+      currentUserInput: "",
+      message: "Vue is great!",
     };
   },
   methods: {
@@ -15,4 +15,22 @@ const app = Vue.createApp({
   },
 });
 
-app.mount('#app');
+app.mount("#app");
+
+// Vue 내부 반응성 시스템 -> JS Proxy 사용
+const data = {
+  message: "Hello!",
+  longMessage: "Hello! World!",
+};
+const handler = {
+  set(target, key, value) {
+    if (key === "message") {
+      target.longMessage = value + " World!";
+    }
+    target.message = value;
+  },
+};
+
+const proxy = new Proxy(data, handler);
+proxy.message = "HELLO !!!!!!";
+console.log(proxy.longMessage);
