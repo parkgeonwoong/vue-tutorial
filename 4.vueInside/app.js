@@ -17,6 +17,15 @@ const app = Vue.createApp({
 
 app.mount("#app");
 
+const app2 = Vue.createApp({
+  data() {
+    return {
+      eat: "apple",
+    };
+  },
+});
+app2.mount("#app2");
+
 // Vue 내부 반응성 시스템 -> JS Proxy 사용
 const data = {
   message: "Hello!",
