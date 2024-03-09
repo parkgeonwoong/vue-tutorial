@@ -18,6 +18,9 @@ const app = Vue.createApp({
 app.mount("#app");
 
 const app2 = Vue.createApp({
+  template: `
+    <p>{{ eat }}</p>
+  `,
   data() {
     return {
       eat: "apple",
