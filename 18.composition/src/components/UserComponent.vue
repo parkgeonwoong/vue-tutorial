@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, isRef, isReactive, toRefs, computed } from 'vue';
+import { reactive, ref, isRef, isReactive, toRefs, computed, watch } from 'vue';
 
 const user = ref({ userName: 'ref hello', age: 30 });
 const user2 = reactive({ userName: 'reactive hello', age: 31 });
@@ -30,13 +30,18 @@ const fullName = computed(() => {
   return firstName.value + ' ' + lastName.value;
 });
 
+watch([firstName, lastName], (newValue, oldValue) => {
+  console.log('Old value: ', oldValue);
+  console.log('New value: ', newValue);
+});
+
 function updateUser() {
   user.value.age++;
 }
 
-console.log(isRef(user.value));
-console.log(isReactive(user2.age));
-console.log(toRefs(user2));
+// console.log(isRef(user.value));
+// console.log(isReactive(user2.age));
+// console.log(toRefs(user2));
 
 // setTimeout(() => {
 //   user.value.userName = 'ref world';
