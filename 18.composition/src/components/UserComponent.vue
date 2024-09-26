@@ -1,10 +1,7 @@
 <template>
   <section class="container">
-    <h2>{{ user.userName }}</h2>
-    <h2>{{ user.age }}</h2>
-
-    <h2>{{ user2.userName }}</h2>
-    <h2>{{ user2.age }}</h2>
+    <UserData :age="user.age" :firstName="firstName" :lastName="lastName" />
+    <!-- <UserData :user="user2" /> -->
 
     <button @click="updateUser">Change age</button>
 
@@ -12,23 +9,29 @@
 
     <div>
       <input type="text" placeholder="first name" v-model="firstName" />
-      <input type="text" placeholder="last name" v-model="lastName" />
+      <input type="text" placeholder="last name" ref="lastNameInput" />
+      <button @click="setLastName">set last name</button>
     </div>
     <h2>{{ fullName }}</h2>
   </section>
 </template>
 
 <script setup>
-import { reactive, ref, isRef, isReactive, toRefs, computed, watch } from 'vue';
+import { reactive, ref, isRef, isReactive, toRefs, computed, watch, provide } from 'vue';
+import UserData from './UserData.vue';
 
 const user = ref({ userName: 'ref hello', age: 30 });
 const user2 = reactive({ userName: 'reactive hello', age: 31 });
 const firstName = ref('');
 const lastName = ref('');
+const lastNameInput = ref(null);
 
 const fullName = computed(() => {
   return firstName.value + ' ' + lastName.value;
 });
+
+const userAge = computed(() => user.value.age);
+provide('userAge', userAge);
 
 watch([firstName, lastName], (newValue, oldValue) => {
   console.log('Old value: ', oldValue);
@@ -37,6 +40,10 @@ watch([firstName, lastName], (newValue, oldValue) => {
 
 function updateUser() {
   user.value.age++;
+}
+
+function setLastName() {
+  lastName.value = lastNameInput.value.value;
 }
 
 // console.log(isRef(user.value));
