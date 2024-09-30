@@ -1,16 +1,25 @@
 <template>
   <the-header></the-header>
   <router-view></router-view>
+
+  <div style="text-align: center">
+    <the-counter></the-counter>
+    <control-center></control-center>
+  </div>
 </template>
 
 <script>
 import { ref, provide } from 'vue';
 
 import TheHeader from './components/TheHeader.vue';
+import ControlCenter from './components/ControlCenter.vue';
+import TheCounter from './components/TheCounter.vue';
 
 export default {
   components: {
     TheHeader,
+    ControlCenter,
+    TheCounter
   },
   setup() {
     const products = ref([
@@ -18,14 +27,14 @@ export default {
         id: 'p1',
         title: 'A Carpet',
         description: 'A nice looking, maybe a little bit used carpet.',
-        price: 15.99,
+        price: 15.99
       },
       {
         id: 'p2',
         title: 'A Book',
         description: 'You can read it. Maybe you should read it.',
-        price: 12.99,
-      },
+        price: 12.99
+      }
     ]);
 
     function addProduct(productData) {
@@ -33,14 +42,14 @@ export default {
         id: new Date().toISOString(),
         title: productData.title,
         description: productData.description,
-        price: productData.price,
+        price: productData.price
       };
       products.value.push(newProduct);
     }
 
     provide('products', products);
     provide('addProduct', addProduct);
-  },
+  }
 };
 </script>
 
