@@ -12,12 +12,39 @@ const app = Vue.createApp({
     setText() {
       // this.message = this.currentUserInput;
       this.message = this.$refs.userText.value;
-      // console.dir(this.$refs.userText);
     },
+  },
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
+  created() {
+    console.log("created");
+  },
+  beforeMount() {
+    console.log("beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
+  },
+  updated() {
+    console.log("updated");
+  },
+  beforeUnmount() {
+    console.log("beforeUnmount");
+  },
+  unmounted() {
+    console.log("unmounted");
   },
 });
 
 app.mount("#app");
+
+setTimeout(() => {
+  app.unmount();
+}, 3000);
 
 const app2 = Vue.createApp({
   template: `
@@ -31,7 +58,9 @@ const app2 = Vue.createApp({
 });
 app2.mount("#app2");
 
-// Vue 내부 반응성 시스템 -> JS Proxy 사용
+/**
+ * Vue 내부 반응성 시스템 -> JS Proxy 사용
+ */
 const data = {
   message: "Hello!",
   longMessage: "Hello! World!",
