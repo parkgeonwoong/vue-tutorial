@@ -1,5 +1,5 @@
 <!-- Options API -->
-<script>
+<!-- <script>
 import FriendContact from './components/FriendContact.vue';
 
 export default {
@@ -25,10 +25,27 @@ export default {
     };
   }
 };
-</script>
+</script> -->
 
 <!-- Composition API -->
-<!-- <script setup></script> -->
+<script setup>
+import FriendContact from './components/FriendContact.vue';
+
+const friends = [
+  {
+    id: 'manuel',
+    name: 'Manuel Lorenz',
+    phone: '01234 5678 991',
+    email: 'manuel@localhost'
+  },
+  {
+    id: 'julie',
+    name: 'Julie Jones',
+    phone: '09876 543 221',
+    email: 'julie@localhost'
+  }
+];
+</script>
 
 <template>
   <header>

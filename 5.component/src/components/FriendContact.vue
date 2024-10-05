@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 export default {
   props: ['friend'],
   data() {
@@ -11,6 +11,23 @@ export default {
       this.detailAreaVisible = !this.detailAreaVisible;
     }
   }
+};
+</script> -->
+
+<!-- Composition API -->
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  friend: {
+    type: Object,
+    required: true
+  }
+});
+const detailAreaVisible = ref(false);
+
+const toggleDetailArea = () => {
+  detailAreaVisible.value = !detailAreaVisible.value;
 };
 </script>
 
