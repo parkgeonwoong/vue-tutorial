@@ -1,5 +1,5 @@
 <!-- Options API -->
-<!-- <script>
+<script>
 import FriendContact from './components/FriendContact.vue';
 
 export default {
@@ -13,22 +13,30 @@ export default {
           id: 'manuel',
           name: 'Manuel Lorenz',
           phone: '01234 5678 991',
-          email: 'manuel@localhost'
+          email: 'manuel@localhost',
+          isFavorite: true
         },
         {
           id: 'julie',
           name: 'Julie Jones',
           phone: '09876 543 221',
-          email: 'julie@localhost'
+          email: 'julie@localhost',
+          isFavorite: false
         }
       ]
     };
+  },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find((friend) => friend.id === friendId);
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    }
   }
 };
-</script> -->
+</script>
 
 <!-- Composition API -->
-<script setup>
+<!-- <script setup>
 import FriendContact from './components/FriendContact.vue';
 
 const friends = [
@@ -46,7 +54,7 @@ const friends = [
     email: 'julie@localhost'
   }
 ];
-</script>
+</script> -->
 
 <template>
   <header>
@@ -54,7 +62,12 @@ const friends = [
   </header>
   <section>
     <ul>
-      <FriendContact v-for="friend in friends" :key="friend.id" :friend="friend" />
+      <FriendContact
+        v-for="friend in friends"
+        :key="friend.id"
+        :friend="friend"
+        @toggleFavorite="toggleFavoriteStatus"
+      />
     </ul>
   </section>
 </template>
