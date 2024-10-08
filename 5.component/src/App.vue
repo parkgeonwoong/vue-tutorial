@@ -1,5 +1,5 @@
 <!-- Options API -->
-<script>
+<!-- <script>
 import FriendContact from './components/FriendContact.vue';
 
 export default {
@@ -33,13 +33,14 @@ export default {
     }
   }
 };
-</script>
+</script> -->
 
 <!-- Composition API -->
-<!-- <script setup>
+<script setup>
+import { ref } from 'vue';
 import FriendContact from './components/FriendContact.vue';
 
-const friends = [
+const friends = ref([
   {
     id: 'manuel',
     name: 'Manuel Lorenz',
@@ -53,8 +54,19 @@ const friends = [
     phone: '09876 543 221',
     email: 'julie@localhost'
   }
-];
-</script> -->
+]);
+
+const toggleFavoriteStatus = (friendId) => {
+  const identifiedFriend = friends.value.find((friend) => friend.id === friendId);
+  identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+
+  // console.log('friends: ', JSON.stringify(friends.value, null, 2));
+  // console.log(
+  //   'friends: ',
+  //   friends.value.forEach((friend) => console.table(friend))
+  // );
+};
+</script>
 
 <template>
   <header>

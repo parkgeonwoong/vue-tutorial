@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 export default {
   props: {
     friend: {
@@ -26,10 +26,10 @@ export default {
     }
   }
 };
-</script>
+</script> -->
 
 <!-- Composition API -->
-<!-- <script setup>
+<script setup>
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -44,17 +44,16 @@ const props = defineProps({
     }
   }
 });
+const emits = defineEmits(['toggleFavorite']);
 const detailAreaVisible = ref(false);
-const friendIsFavorite = ref(props.friend.isFavorite);
 
 const toggleDetailArea = () => {
   detailAreaVisible.value = !detailAreaVisible.value;
 };
 const toggleFavorite = () => {
-  friendIsFavorite.value = !friendIsFavorite.value;
+  emits('toggleFavorite', props.friend.id);
 };
-
-</script> -->
+</script>
 
 <template>
   <li>
