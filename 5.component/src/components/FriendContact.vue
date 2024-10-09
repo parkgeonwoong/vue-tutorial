@@ -44,7 +44,16 @@ const props = defineProps({
     }
   }
 });
-const emits = defineEmits(['toggleFavorite']);
+const emits = defineEmits({
+  toggleFavorite: (id) => {
+    if (id) {
+      return true;
+    } else {
+      console.warn('Id is missing');
+      return false;
+    }
+  }
+});
 const detailAreaVisible = ref(false);
 
 const toggleDetailArea = () => {

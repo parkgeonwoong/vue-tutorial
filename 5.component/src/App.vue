@@ -39,6 +39,7 @@ export default {
 <script setup>
 import { ref } from 'vue';
 import FriendContact from './components/FriendContact.vue';
+import NewFriend from './components/NewFriend.vue';
 
 const friends = ref([
   {
@@ -66,12 +67,23 @@ const toggleFavoriteStatus = (friendId) => {
   //   friends.value.forEach((friend) => console.table(friend))
   // );
 };
+
+const addFriend = (info) => {
+  const newFriend = {
+    id: new Date().toISOString(),
+    ...info
+  };
+  friends.value = [newFriend, ...friends.value];
+};
 </script>
 
 <template>
   <header>
     <h1>FriendList</h1>
   </header>
+
+  <NewFriend @addFriend="addFriend" />
+
   <section>
     <ul>
       <FriendContact
