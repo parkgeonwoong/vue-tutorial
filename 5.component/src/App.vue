@@ -67,6 +67,9 @@ const toggleFavoriteStatus = (friendId) => {
   //   friends.value.forEach((friend) => console.table(friend))
   // );
 };
+const removeFriend = (friendId) => {
+  friends.value = friends.value.filter((friend) => friend.id !== friendId);
+};
 
 const addFriend = (info) => {
   const newFriend = {
@@ -91,6 +94,7 @@ const addFriend = (info) => {
         :key="friend.id"
         :friend="friend"
         @toggleFavorite="toggleFavoriteStatus"
+        @removeFriend="removeFriend"
       />
     </ul>
   </section>

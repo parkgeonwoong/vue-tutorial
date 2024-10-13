@@ -52,6 +52,10 @@ const emits = defineEmits({
       console.warn('Id is missing');
       return false;
     }
+  },
+  removeFriend: (id) => {
+    if (id) return true;
+    else return false;
   }
 });
 const detailAreaVisible = ref(false);
@@ -73,5 +77,6 @@ const toggleFavorite = () => {
       <li><strong>Phone:</strong> {{ friend.phone }}</li>
       <li><strong>Email:</strong> {{ friend.email }}</li>
     </ul>
+    <button @click="$emit('removeFriend', friend.id)">Remove</button>
   </li>
 </template>
