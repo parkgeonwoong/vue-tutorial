@@ -7,6 +7,12 @@
       :info-text="activeUser.description"
       :role="activeUser.role"
     />
+
+    <CourseGoal #default="slotProps">
+      <h2>{{ slotProps.item }}</h2>
+    </CourseGoal>
+
+    <hr />
   </div>
 </template>
 
@@ -15,6 +21,7 @@ import { ref } from 'vue';
 import TheHeader from './components/TheHeader.vue';
 import BadgeList from './components/BadgeList.vue';
 import UserInfo from './components/UserInfo.vue';
+import CourseGoal from './components/CourseGoal.vue';
 
 const activeUser = ref({
   name: 'Maximilian Schwarzmüller',

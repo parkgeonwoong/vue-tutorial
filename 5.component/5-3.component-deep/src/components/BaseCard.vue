@@ -1,11 +1,23 @@
 <template>
   <div>
-    <header>
-      <slot name="header"></slot>
+    <header v-if="slots.header">
+      <slot name="header">
+        <!-- <h2>The Default</h2> -->
+      </slot>
     </header>
     <slot></slot>
   </div>
 </template>
+
+<script setup>
+import { onMounted, useSlots } from 'vue';
+
+const slots = useSlots();
+
+onMounted(() => {
+  console.log('slot:', slots);
+});
+</script>
 
 <style scoped>
 header {
