@@ -2,13 +2,12 @@
   <li>
     <h3>{{ topicName }}</h3>
     <p>{{ description }}</p>
-    <button @click="$emit('select-topic', id)">Learn More</button>
+    <button @click="activateTopic(id)">Learn More</button>
   </li>
 </template>
 
-<script>
-export default {
-  props: ['id', 'topicName', 'description'],
-  emits: ['select-topic'],
-};
+<script setup>
+import { inject } from 'vue';
+const { id, topicName, description } = defineProps(['id', 'topicName', 'description']);
+const { activateTopic } = inject('topics');
 </script>
